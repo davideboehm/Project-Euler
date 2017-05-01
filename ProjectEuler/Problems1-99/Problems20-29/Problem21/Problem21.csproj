@@ -49,7 +49,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\FactorsUtility\FactorsUtility.csproj">
+    <ProjectReference Include="..\..\..\Utility\Math\FactorsUtility\FactorsUtility.csproj">
       <Project>{39cf3c45-e947-498e-9e08-369ba207e54e}</Project>
       <Name>FactorsUtility</Name>
     </ProjectReference>

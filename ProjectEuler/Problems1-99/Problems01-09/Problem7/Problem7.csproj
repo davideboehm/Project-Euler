@@ -44,15 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="10001stPrime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Utility\Primes\PrimesUtility.csproj">
-      <Project>{6B43E342-8A1A-4D8D-8BC2-8C358598D0F2}</Project>
+    <ProjectReference Include="..\..\..\Utility\Math\Primes\PrimesUtility.csproj">
+      <Project>{6b43e342-8a1a-4d8d-8bc2-8c358598d0f2}</Project>
       <Name>PrimesUtility</Name>
     </ProjectReference>
   </ItemGroup>

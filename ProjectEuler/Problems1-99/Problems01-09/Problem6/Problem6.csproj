@@ -44,15 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="SumSquareDifference.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Utility\Long\LongUtility.csproj">
-      <Project>{ED8FC502-467A-4538-A973-4943B8191CE0}</Project>
+    <ProjectReference Include="..\..\..\Utility\Math\Long\LongUtility.csproj">
+      <Project>{ed8fc502-467a-4538-a973-4943b8191ce0}</Project>
       <Name>LongUtility</Name>
     </ProjectReference>
   </ItemGroup>
