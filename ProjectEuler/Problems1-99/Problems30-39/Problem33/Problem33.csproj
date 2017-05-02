@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B3D95F2D-7718-46AE-8B2C-03324F37A0DA}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MathUtility</RootNamespace>
-    <AssemblyName>MathUtility</AssemblyName>
+    <ProjectGuid>{7D5007BA-9269-48F7-9559-921A209FE8AE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Problem33</RootNamespace>
+    <AssemblyName>Problem33</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,10 +34,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,22 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MathUtility.cs" />
-    <Compile Include="Numerics\DigitableInt.cs" />
-    <Compile Include="Numerics\Fraction.cs" />
+    <Compile Include="DigitCancellingFractions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Math\DynamicUtility\DynamicUtility.csproj">
-      <Project>{7783e720-7483-4d59-8fc4-e8b48a32a6a2}</Project>
-      <Name>DynamicUtility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Math\Primes\PrimesUtility.csproj">
-      <Project>{6b43e342-8a1a-4d8d-8bc2-8c358598d0f2}</Project>
-      <Name>PrimesUtility</Name>
+    <ProjectReference Include="..\..\..\Utility\MathUtility\MathUtility.csproj">
+      <Project>{b3d95f2d-7718-46ae-8b2c-03324f37a0da}</Project>
+      <Name>MathUtility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

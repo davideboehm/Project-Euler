@@ -24,7 +24,7 @@ namespace Problem6
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            var numbers = LongEnumerable.Range(1, 100).ToList();
+            var numbers = Enumerable.Range(1, 100).ToList();
             var sum = numbers.Sum();
             var squareOfSum = sum * sum;
             long sumOfSquares = numbers.Select(value => value * value).Sum();

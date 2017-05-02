@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathUtility
 {
+    using Primes;
     using System.Numerics;
     public class Fraction
     {
@@ -59,6 +60,19 @@ namespace MathUtility
                 }
             }
         }
-
+        public Fraction Simplify()
+        {
+            var newNumerator = this.numerator;
+            var newDenominator = this.denominator;
+            foreach(var prime in PrimesUtility.GetPrimesUpTo(Math.Max(newNumerator, newDenominator)))
+            {
+                while(newNumerator % prime == 0 && newDenominator % prime == 0)
+                {
+                    newNumerator /= prime;
+                    newDenominator /= prime;
+                }
+            }
+            return new Fraction(newNumerator, newDenominator);
+        }
     }
 }

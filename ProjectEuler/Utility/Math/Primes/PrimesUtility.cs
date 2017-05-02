@@ -10,25 +10,21 @@ namespace Primes
 
     public static class PrimesUtility
     {
-        public static IEnumerable<long> GetEnumerablePrimes()
+        /// <summary>
+        /// First 10 known primes
+        /// </summary>
+        private static List<Int64> knownPrimes = new List<Int64>()
+        {
+            2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+        };
+
+        public static IEnumerable<long> Primes()
         {
             return new PrimesEnumerable();
         }
         public static IEnumerable<long> GetPrimesUpTo(long maxValue)
         {
-            return PrimesEnumerable.GetPrimesUpTo(maxValue);
-        }
-        public static IEnumerable<long> GetFirstXPrimes(int numberOfPrimes)
-        {
-            return PrimesEnumerable.GetFirstXPrimes(numberOfPrimes);
-        }
-    }
-
-    internal class PrimesEnumerable : IEnumerable<Int64>
-    {
-        public static IEnumerable<long> GetPrimesUpTo(long maxValue)
-        {
-            if(knownPrimes.Last()<maxValue)
+            if (knownPrimes.Last() < maxValue)
             {
                 CalculatePrimesUpToValue(maxValue);
             }
@@ -37,7 +33,7 @@ namespace Primes
         }
         public static IEnumerable<long> GetFirstXPrimes(int numberOfPrimes)
         {
-            long logN = (long) Math.Log(numberOfPrimes);
+            long logN = (long)Math.Log(numberOfPrimes);
             long upperBound = 2 * numberOfPrimes * logN;
             while (knownPrimes.Count < numberOfPrimes)
             {
@@ -47,7 +43,6 @@ namespace Primes
 
             return knownPrimes.Take(numberOfPrimes);
         }
-
         private static void CalculatePrimesUpToValue(long maxValue)
         {
             var result = new List<long>();
@@ -67,34 +62,30 @@ namespace Primes
 
             knownPrimes = result;
         }
-
-        public IEnumerator<Int64> GetEnumerator()
+        internal class PrimesEnumerable : IEnumerable<Int64>
         {
-            int index = 0;
-            while (index < knownPrimes.Count)
+            public IEnumerator<Int64> GetEnumerator()
             {
-                yield return knownPrimes[index];
-                index++;
-                if (index == knownPrimes.Count)
+                int index = 0;
+                while (index < PrimesUtility.knownPrimes.Count)
                 {
-                    CalculatePrimesUpToValue(2 * knownPrimes.Last());
+                    yield return knownPrimes.ElementAt(index);
+                    index++;
+                    if (index == knownPrimes.Count)
+                    {
+                        CalculatePrimesUpToValue(2 * knownPrimes.Last());
+                    }
                 }
             }
-        }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return this.GetEnumerator();
+            }
         }
-
-        /// <summary>
-        /// First 10 known primes
-        /// </summary>
-        private static List<Int64> knownPrimes = new List<Int64>()
-        {
-            2, 3, 5, 7, 11, 13, 17, 19, 23, 29
-        };
     }
+
+  
 
 
   

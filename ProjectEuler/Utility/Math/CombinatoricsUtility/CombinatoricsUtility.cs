@@ -17,6 +17,17 @@ namespace CombinatoricsUtility
             }
             return (long) result;
         }
+        public static List<List<T>> GenerateRotations<T>(List<T> initialItems)
+        {
+            Queue<T> queue = new Queue<T>(initialItems);
+            List<List<T>> results = new List<List<T>>();
+            for (int i = 0; i < initialItems.Count; i++)
+            {
+                queue.Enqueue(queue.Dequeue());
+                results.Add(queue.ToList());
+            }
+            return results;
+        }
 
         public static List<List<T>> GeneratePermutations<T>(List<T> initialItems)
         {
