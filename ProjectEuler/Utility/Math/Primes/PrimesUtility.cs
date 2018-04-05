@@ -43,25 +43,34 @@ namespace Primes
 
             return knownPrimes.Take(numberOfPrimes);
         }
+
         private static void CalculatePrimesUpToValue(long maxValue)
         {
-            var result = new List<long>();
-            var potentialPrimes = new bool[maxValue];
-            for (int index = 2; index < maxValue; index++)
+            long start = knownPrimes.Last();
+            var potentialPrimes = new bool[maxValue - start];
+            
+            foreach(var prime in knownPrimes)
+            {
+                for (long elimIndex = prime - start%prime; elimIndex < maxValue - start; elimIndex += prime)
+                {
+                    potentialPrimes[elimIndex] = true;
+                }
+            }
+
+            for (int index = 2; index < maxValue - start; index+=2)
             {
                 if (potentialPrimes[index] == false)
                 {
-                    var currentPrime = index;
-                    result.Add(currentPrime);
-                    for (int elimIndex = index; elimIndex < maxValue; elimIndex += currentPrime)
+                    var currentPrime = index + start;
+                    knownPrimes.Add(currentPrime);
+                    for (long elimIndex = index; elimIndex < maxValue - start; elimIndex += currentPrime)
                     {
                         potentialPrimes[elimIndex] = true;
                     }
                 }
             }
-
-            knownPrimes = result;
         }
+
         internal class PrimesEnumerable : IEnumerable<Int64>
         {
             public IEnumerator<Int64> GetEnumerator()

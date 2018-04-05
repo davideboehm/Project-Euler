@@ -16,6 +16,18 @@ namespace FactorsUtility
             result.RemoveAt(result.Count - 1);
             return result;
         }
+
+        public static int GCD(int a, int b)
+        {
+            while (b != 0)
+            {
+                int temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+
         public static List<int> GetFactors(int number)
         {
             var max = (int)Math.Sqrt(number) +1 ;
@@ -38,7 +50,7 @@ namespace FactorsUtility
             return result;
         }
 
-        public static List<(int, int)> GetPrimeFactors(int number)
+        public static List<(int factor, int count)> GetPrimeFactors(int number)
         {
             var result = new List<(int factor, int count)>();
             var potentialFactors = PrimesUtility.GetPrimesUpTo(number+1);
